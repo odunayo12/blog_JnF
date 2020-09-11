@@ -1,2 +1,2 @@
 # blog_JnF
-This blog uses MongoDB, Express, Bootstrap, and Nodejs stack
+This blog is implemented using MongoDB, Express, Bootstrap, and Nodejs stack
