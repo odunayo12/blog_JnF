@@ -1,0 +1,253 @@
+<%- include("partials/header"); -%>
+<!--Main layout-->
+<main>
+    <div class="container">
+        <section class="mt-5">
+            <button type="button" class="btn  btn-lg btn-block btn-rounded h1 fadeInRight">
+                <h1 class="light-green-text">Post Page</h1>
+
+            </button>
+
+
+
+            <!-- Compiled By -->
+            <form id="conditionalForm" class="mt-3  wow fadeInLeftBig" action="/compose" method="post">
+                <div class="form-group compiledByDiv">
+                    <label class="control-label h4">
+                        Compiled By
+                    </label>
+                    <!-- Grid row -->
+                    <div class="form-row">
+                        <!-- Grid column -->
+                        <div class="form-group col-md-1">
+                            <label>Title</label>
+                            <input type="text" name="composerTitle" id="composerTitle" class="form-control"
+                                placeholder="Title">
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="form-group col-md-3">
+                            <label>First Name</label>
+                            <input type="text" name="composerFName" id="composerFName" class="form-control"
+                                placeholder="First Name">
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="form-group col-md-3">
+                            <label>Last Name</label>
+                            <input type="text" name="composerLName" id="composerLName" class="form-control"
+                                placeholder="Last Name">
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="form-group col-md-5">
+                            <label>email</label>
+                            <input type="email" name="composerEmail" id="composerEmail" class="form-control"
+                                placeholder="e.g@example.com">
+                        </div>
+                        <!-- Grid column -->
+                    </div>
+                    <!-- Grid row -->
+                    <input type="checkbox" id="ComposerNAuthor" name="sameComposerNAuthor"
+                        onchange="addressFunction()" />
+                    <em>Check this box if you compiled and are the author of this post</em>
+                </div>
+
+
+                <hr class="my-1">
+
+                <!-- Compiled By-->
+                <div class="postHead">
+                    <!-- Section -->
+                    <fieldset class="form-group">
+                        <label class="control-label h4">
+                            Section
+                        </label>
+                        <div class="">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="sectionRadios" id="ArticleRadio"
+                                    value="Article" />
+                                <label class="form-check-label" for="ArticleRadio">
+                                    Article
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="sectionRadios" id="bookRadio"
+                                    value="Book" />
+                                <label class="form-check-label" for="bookRadio">
+                                    Book
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="sectionRadios" id="vedAudioRadio"
+                                    value="Vedio or Audio" />
+                                <label class="form-check-label" for="vedAudioRadio">
+                                    Vedio/Audio
+                                </label>
+                            </div>
+                    </fieldset>
+                    <!-- Section -->
+
+                    <hr class="my-1">
+
+                    <!-- Author -->
+                    <div id="authorDetails" class="form-group hidden">
+                        <!-- label -->
+                        <label class="control-label h4">
+                            Author
+                        </label>
+                        <!-- label -->
+                        <!-- Grid row -->
+                        <div class="form-row">
+                            <!-- Grid column -->
+
+                            <div class="form-group col-md-4">
+                                <label>Title</label>
+                                <input type="text" name="authorTitle" id="authorTitle" class="form-control"
+                                    placeholder="Title">
+                            </div>
+                            <!-- Grid column -->
+
+                            <!-- Grid column -->
+                            <div class="form-group col-md-4">
+                                <label>First Name</label>
+                                <input type="text" name="authorFName" id="authorFName" class="form-control"
+                                    placeholder="First Name">
+                            </div>
+                            <!-- Grid column -->
+
+                            <!-- Grid column -->
+                            <div class="form-group col-md-4">
+                                <label>Last Name</label>
+                                <input type="text" name="authorLName" id="authorLName" class="form-control"
+                                    placeholder="Last Name">
+                            </div>
+                            <!-- Grid column -->
+                        </div>
+                        <!-- Grid row -->
+                        <!-- <hr class="my-1"> -->
+                        <!-- Author -->
+                    </div>
+                    <script>
+                        function addressFunction() {
+                            if (document.getElementById("ComposerNAuthor").checked) {
+                                document.getElementById(
+                                    "authorTitle"
+                                ).value = document.getElementById("composerTitle").value;
+                                document.getElementById(
+                                    "authorFName"
+                                ).value = document.getElementById("composerFName").value;
+                            } else {
+                                document.getElementById("authorTitle").value = "";
+                                document.getElementById("authorFName").value = "";
+                            }
+                        }
+                    </script>
+
+
+
+                    <!-- Grid row -->
+                    <div id="postTitleNTags" class="form-group hidden">
+                        <!-- Post Title -->
+                        <div class="form-group">
+                            <label for="postTitle" class="h5">Post Title</label>
+                            <input id="postTitle" class="form-control" type="text" name="postTitle">
+                        </div>
+                        <!-- Tags -->
+                        <div class="form-group">
+                            <!-- mdb-select md-form -->
+                            <label for="inputTag" class="h5">Tags</label> <br>
+                            <!-- see: https://developer.snapappointments.com/bootstrap-select/examples/#standard-select-boxes -->
+                            <select id="inputTag" name="inputTag" class="selectpicker" data-live-search="true" multiple
+                                title="Please choose up to 5..." data-max-options="5" data-width="75%"
+                                data-container="body">
+                                <!-- <option value="1" disabled></option> -->
+                                <option value="Assurance">Assurance</option>
+                                <option value="Brokenness">Brokenness</option>
+                                <option value="Comfort ">Comfort </option>
+                                <option value="Discipleship">Discipleship</option>
+                                <option value="Discipline">Discipline</option>
+                                <option value="End time">End time</option>
+                                <option value="Faith">Faith</option>
+                                <option value="Fasting">Fasting</option>
+                                <option value="Glorification">Glorification</option>
+                                <option value="Grace">Grace</option>
+                                <option value="Health">Health</option>
+                                <option value="Holiness">Holiness</option>
+                                <option value="Holy Spirit">Holy Spirit</option>
+                                <option value="Hope">Hope</option>
+                                <option value="Justification">Justification</option>
+                                <option value="Life">Life</option>
+                                <option value="Living seed">Living seed</option>
+                                <option value="Mercy">Mercy</option>
+                                <option value="Patriarchs">Patriarchs</option>
+                                <option value="Persecution">Persecution</option>
+                                <option value="Poverty">Poverty</option>
+                                <option value="Power">Power</option>
+                                <option value="Providence">Providence</option>
+                                <option value="Purity">Purity</option>
+                                <option value="Resurrection">Resurrection</option>
+                                <option value="Revelation">Revelation</option>
+                                <option value="Righteousness">Righteousness</option>
+                                <option value="Sanctification">Sanctification</option>
+                                <option value="Seeking God">Seeking God</option>
+                                <option value="Sickness">Sickness</option>
+                                <option value="The world">The world</option>
+                                <option value="Vision">Vision</option>
+                                <option value="Worldliness">Worldliness</option>
+                                <option value="New Life">New Life</option>
+                                <option value="Divine Life">Divine Life</option>
+
+
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Grid row -->
+
+
+                    <!-- Text Area -->
+                    <div class="form-group hidden">
+                        <label for="introTextArea" class="h5">Introduction</label>
+                        <textarea class="form-control" id="introTextArea" name="introTextArea" rows="3" cols="30"
+                            placeholder="100 words of either post's first paragraph or composed synopsis ..."></textarea>
+                    </div>
+                    <!-- Text Area -->
+                </div>
+
+                <!-- Text Area -->
+                <div class="form-group hidden">
+                    <label for="linkTextAtrea" class="h5">Link</label>
+                    <textarea class="form-control" id="linkTextAtrea" name='linkTextAtrea' rows="2" cols="20"
+                        placeholder="Link to Vedio, Audio or Book"></textarea>
+                </div>
+                <!-- Text Area -->
+                <div class="form-group hidden">
+                    <label for="imageLinkText" class="h5">Image Link</label>
+                    <textarea name="imageLinkText" id="imageLinkText" class="form-control"
+                        placeholder="Link to book's coverpage image" rows="1" cols="20"></textarea>
+                </div>
+                <!-- Text Area -->
+                <div class="form-group hidden">
+                    <label for="postTextAtrea" class="h5">Post</label>
+                    <textarea class="form-control" id="postTextAtrea" name="postTextAtrea" rows="7" cols="30"
+                        placeholder="Text goes here..."></textarea>
+                </div>
+                <!-- Text Area -->
+
+                <!-- submit button -->
+                <div class="form-group">
+                    <button class="btn btn-primary" type="submit" name="postSubmitButton">Submit</button>
+                </div>
+
+            </form>
+
+
+    </div>
+    <!--Grid row-->
+    <!-- <hr class="my-1"> -->
+</main>
+<!--Main layout-->
+<%- include("partials/footer"); -%>
