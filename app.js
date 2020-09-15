@@ -16,8 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
 // for nodemailer
 app.use(bodyParser.json());
-admin = process.env.ADMIN;
-PWD = process.env.PWD;
+
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
