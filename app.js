@@ -1,6 +1,6 @@
 require("dotenv").config();
 const express = require("express");
-const sendMail = require("./mail");
+//const sendMail = require("./mail");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require("mongoose");
@@ -194,3 +194,4 @@ app.listen(port, function () {
   }
   console.log(`Server Starts on ${port}`);
 });
+//  https://damp-sierra-01173.herokuapp.com/
