@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 const moment = require("moment");
 
 const app = express();
-const port = 3000;
+let port = process.env.PORT;
 
 app.set("view engine", "ejs");
 app.use(express.static("css"));
@@ -187,6 +187,10 @@ app
 // app.get('/posts', (req, res) => {
 //     res.render('post');
 // });
+
 app.listen(port, function () {
+  if (port == null || port == "") {
+    port = 3000;
+  }
   console.log(`Server Starts on ${port}`);
 });
