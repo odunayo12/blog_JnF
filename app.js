@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 const moment = require("moment");
 
 const app = express();
-let port = process.env.PORT;
+let port = process.env.PORT || 3000;
 
 app.set("view engine", "ejs");
 app.use(express.static("css"));
@@ -22,6 +22,18 @@ mongoose.connect(process.env.MONGO_URI, {
   useUnifiedTopology: true,
   useCreateIndex: true,
 });
+mongoose.connection
+  .once("open", function () {
+    console.log("Conection has been made!");
+  })
+  .on("error", function (error) {
+    console.log("Error is: ", error);
+  });
+// mongoose.connect(process.env.MONGO_URI, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+//   useCreateIndex: true,
+// });
 
 //comment Data Model
 const commentSchema = new mongoose.Schema({
@@ -87,11 +99,14 @@ app.get("/", (req, res) => {
     // posts.date_posted.forEach(element => {
     //     console.log(moment.utc(element).format("h:mm"));
     // });
-
-    res.render("home", {
-      posts: posts,
-      todaysMonth: todaysMonth,
-    });
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("home", {
+        posts: posts,
+        todaysMonth: todaysMonth,
+      });
+    }
   });
 });
 
@@ -188,11 +203,13 @@ app
 //     res.render('post');
 // });
 
-app.listen(port, function () {
-  if (port == null || port == "") {
-    port = 7000;
-  }
+// app.listen(3000, () => {
+//   console.log(`Server started on port`);
+// });
+
+app.listen(port, () => {
   console.log(`Server Starts on ${port}`);
 });
 //  https://damp-sierra-01173.herokuapp.com/
 // heroku logs --tail
+// run with "heroku local"
