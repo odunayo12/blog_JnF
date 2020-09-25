@@ -190,8 +190,9 @@ app
 
 app.listen(port, function () {
   if (port == null || port == "") {
-    port = 3000;
+    port = 7000;
   }
   console.log(`Server Starts on ${port}`);
 });
 //  https://damp-sierra-01173.herokuapp.com/
+// heroku logs --tail
